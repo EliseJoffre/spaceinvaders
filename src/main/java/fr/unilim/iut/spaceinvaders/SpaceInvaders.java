@@ -41,7 +41,9 @@ public class SpaceInvaders implements Jeu {
 			marque = Constante.MARQUE_VAISSEAU;
 		} else {
 			if (this.aUnMissileQuiOccupeLaPosition(x, y)) {
+
 				marque = Constante.MARQUE_MISSILE;
+
 			} else {
 				marque = Constante.MARQUE_VIDE;
 			}
@@ -127,6 +129,11 @@ public class SpaceInvaders implements Jeu {
 			tirerUnMissile(new Dimension(Constante.MISSILE_LONGUEUR, Constante.MISSILE_HAUTEUR),
 					Constante.MISSILE_VITESSE);
 		}
+		if(this.aUnMissile()){
+			deplacerMissile();
+		}else{
+			System.out.println("fini !");
+		}
 
 	}
 
@@ -152,7 +159,8 @@ public class SpaceInvaders implements Jeu {
 
 	public void deplacerMissile() {
 		missile.deplacerVerticalementVers(Direction.HAUT_ECRAN);
-		if(missile.ordonneeLaPlusHaute()>this.hauteur){
+		if (this.missile.ordonneeLaPlusHaute() == 0) {
+			this.missile = null;
 			
 		}
 

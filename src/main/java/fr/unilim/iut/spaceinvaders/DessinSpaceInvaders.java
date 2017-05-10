@@ -1,6 +1,5 @@
 package fr.unilim.iut.spaceinvaders;
 
-import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
@@ -13,17 +12,19 @@ public class DessinSpaceInvaders implements DessinJeu {
 
 	public DessinSpaceInvaders(SpaceInvaders spaceInvaders) {
 		this.jeu = spaceInvaders;
-	
+
 	}
 
 	@Override
 	public void dessiner(BufferedImage im) {
+		String jeu = this.jeu.recupererEspaceJeuDansChaineASCII();
+		this.dessinerUnFond(jeu, im);
 		if (this.jeu.aUnVaisseau()) {
 			Vaisseau vaisseau = this.jeu.recupererVaisseau();
 			this.dessinerUnVaisseau(vaisseau, im);
 		}
 		if (this.jeu.aUnMissile()) {
-			Missile  missile = this.jeu.recupererMissile();
+			Missile missile = this.jeu.recupererMissile();
 			this.dessinerUnMissile(missile, im);
 		}
 	}
@@ -32,21 +33,27 @@ public class DessinSpaceInvaders implements DessinJeu {
 		Graphics2D crayon = (Graphics2D) im.getGraphics();
 		java.awt.Toolkit toolkit = java.awt.Toolkit.getDefaultToolkit();
 		Image image = toolkit.getImage("./img/vaisseau.png");
-		crayon.drawImage(image,vaisseau.abscisseLaPlusAGauche(),vaisseau.ordonneeLaPlusBasse(),vaisseau.longueur(),vaisseau.hauteur(),null);
-		
-		
+		crayon.drawImage(image, vaisseau.abscisseLaPlusAGauche(), vaisseau.ordonneeLaPlusBasse(), vaisseau.longueur(),
+				vaisseau.hauteur(), null);
 
 	}
-	
+
 	private void dessinerUnMissile(Missile missile, BufferedImage im) {
 		Graphics2D crayon = (Graphics2D) im.getGraphics();
-
-		crayon.setColor(Color.BLUE);
-		crayon.fillRect(missile.abscisseLaPlusAGauche(), missile.ordonneeLaPlusBasse(), missile.longueur(),
-				missile.hauteur());
+		java.awt.Toolkit toolkit = java.awt.Toolkit.getDefaultToolkit();
+		Image image = toolkit.getImage("./img/missile.png");
+		crayon.drawImage(image, missile.abscisseLaPlusAGauche(), missile.ordonneeLaPlusBasse(), missile.longueur(),
+				missile.hauteur(), null);
 
 	}
 
-	
-}
+	private void dessinerUnFond(String jeu2, BufferedImage im) {
+		Graphics2D crayon = (Graphics2D) im.getGraphics();
+		java.awt.Toolkit toolkit = java.awt.Toolkit.getDefaultToolkit();
+		Image image = toolkit.getImage("./img/fond.png");
+		crayon.drawImage(image, 0, 0, 750, 650, null);
+		
 
+	}
+
+}

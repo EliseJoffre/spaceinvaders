@@ -19,6 +19,8 @@ public class DessinSpaceInvaders implements DessinJeu {
 	public void dessiner(BufferedImage im) {
 		String jeu = this.jeu.recupererEspaceJeuDansChaineASCII();
 		this.dessinerUnFond(jeu, im);
+		Envahisseur envahisseur = this.jeu.recupererEnvahisseur();
+		this.dessinerUnEnvahisseur(envahisseur, im);
 		if (this.jeu.aUnVaisseau()) {
 			Vaisseau vaisseau = this.jeu.recupererVaisseau();
 			this.dessinerUnVaisseau(vaisseau, im);
@@ -44,6 +46,15 @@ public class DessinSpaceInvaders implements DessinJeu {
 		Image image = toolkit.getImage("./img/missile.png");
 		crayon.drawImage(image, missile.abscisseLaPlusAGauche(), missile.ordonneeLaPlusBasse(), missile.longueur(),
 				missile.hauteur(), null);
+
+	}
+	
+	private void dessinerUnEnvahisseur (Envahisseur envahisseur, BufferedImage im) {
+		Graphics2D crayon = (Graphics2D) im.getGraphics();
+		java.awt.Toolkit toolkit = java.awt.Toolkit.getDefaultToolkit();
+		Image image = toolkit.getImage("./img/envahisseur.png");
+		crayon.drawImage(image, envahisseur.abscisseLaPlusAGauche(), envahisseur.ordonneeLaPlusBasse(), envahisseur.longueur(),
+				envahisseur.hauteur(), null);
 
 	}
 

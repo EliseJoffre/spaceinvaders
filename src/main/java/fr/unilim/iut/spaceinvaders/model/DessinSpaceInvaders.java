@@ -1,4 +1,4 @@
-package fr.unilim.iut.spaceinvaders;
+package fr.unilim.iut.spaceinvaders.model;
 
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -19,8 +19,11 @@ public class DessinSpaceInvaders implements DessinJeu {
 	public void dessiner(BufferedImage im) {
 		String jeu = this.jeu.recupererEspaceJeuDansChaineASCII();
 		this.dessinerUnFond(jeu, im);
-		Envahisseur envahisseur = this.jeu.recupererEnvahisseur();
-		this.dessinerUnEnvahisseur(envahisseur, im);
+		if (this.jeu.aUnEnvahisseur()){
+			Envahisseur envahisseur = this.jeu.recupererEnvahisseur();
+			this.dessinerUnEnvahisseur(envahisseur, im);
+		}
+		
 		if (this.jeu.aUnVaisseau()) {
 			Vaisseau vaisseau = this.jeu.recupererVaisseau();
 			this.dessinerUnVaisseau(vaisseau, im);

@@ -1,5 +1,8 @@
 package fr.unilim.iut.spaceinvaders;
 
+import fr.unilim.iut.spaceinvaders.model.Constante;
+import fr.unilim.iut.spaceinvaders.model.DessinSpaceInvaders;
+import fr.unilim.iut.spaceinvaders.model.SpaceInvaders;
 import fr.unilim.iut.spaceinvaders.moteurjeu.MoteurGraphique;
 
 public class Main {
@@ -13,6 +16,5 @@ public class Main {
 		MoteurGraphique moteur = new MoteurGraphique(jeu, afficheur);
 		moteur.lancerJeu(Constante.ESPACEJEU_LONGUEUR, Constante.ESPACEJEU_HAUTEUR);
 	}
-	
 
 }

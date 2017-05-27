@@ -1,7 +1,5 @@
 package fr.unilim.iut.spaceinvaders;
-import fr.unilim.iut.spaceinvaders.model.Dimension;
-import fr.unilim.iut.spaceinvaders.model.Position;
-import fr.unilim.iut.spaceinvaders.model.SpaceInvaders;
+import fr.unilim.iut.spaceinvaders.model.*;
 import fr.unilim.iut.spaceinvaders.utils.*;
 import static org.junit.Assert.*;
 import org.junit.*;

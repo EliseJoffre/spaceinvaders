@@ -1,15 +1,10 @@
 package fr.unilim.iut.spaceinvaders;
 
 import static org.junit.Assert.*;
+
 import org.junit.*;
 
-import fr.unilim.iut.spaceinvaders.model.Collision;
-import fr.unilim.iut.spaceinvaders.model.Dimension;
-import fr.unilim.iut.spaceinvaders.model.Envahisseur;
-import fr.unilim.iut.spaceinvaders.model.Missile;
-import fr.unilim.iut.spaceinvaders.model.Position;
-import fr.unilim.iut.spaceinvaders.model.SpaceInvaders;
-import fr.unilim.iut.spaceinvaders.model.Sprite;
+import fr.unilim.iut.spaceinvaders.model.*;
 
 public class CollisionTest {
 
@@ -38,8 +33,8 @@ public class CollisionTest {
 			spaceinvaders.deplacerMissile();
 		}
  		assertEquals("" + 
- 		".......EEE.....\n" + 
- 		".......EME.....\n" +
+ 		"...............\n" + 
+ 		"...............\n" +
  		"...............\n" + 
  		"...............\n" + 
  		"...............\n" + 
@@ -66,8 +61,8 @@ public class CollisionTest {
 			spaceinvaders.deplacerMissile();
 		}
  		assertEquals("" + 
- 		"........EEE....\n" + 
- 		"........MEE....\n" +
+ 		"...............\n" + 
+ 		"...............\n" +
  		"...............\n" + 
  		"...............\n" + 
  		"...............\n" + 
@@ -94,8 +89,8 @@ public class CollisionTest {
 			spaceinvaders.deplacerMissile();
 		}
  		assertEquals("" + 
- 		"......EEE......\n" + 
- 		"......EEM......\n" +
+ 		"...............\n" + 
+ 		"...............\n" +
  		"...............\n" + 
  		"...............\n" + 
  		"...............\n" + 

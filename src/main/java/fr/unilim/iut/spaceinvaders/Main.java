@@ -11,9 +11,9 @@ public class Main {
 
 		SpaceInvaders jeu = new SpaceInvaders(Constante.ESPACEJEU_LONGUEUR, Constante.ESPACEJEU_HAUTEUR);
 		jeu.initialiserJeu();
-		DessinSpaceInvaders afficheur = new DessinSpaceInvaders(jeu);
-
-		MoteurGraphique moteur = new MoteurGraphique(jeu, afficheur);
+		DessinSpaceInvaders aff = new DessinSpaceInvaders(jeu);
+		
+		MoteurGraphique moteur = new MoteurGraphique(jeu, aff);
 		moteur.lancerJeu(Constante.ESPACEJEU_LONGUEUR, Constante.ESPACEJEU_HAUTEUR);
 	}
 

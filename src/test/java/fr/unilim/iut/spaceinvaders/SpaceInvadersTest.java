@@ -279,7 +279,7 @@ import org.junit.*;
 
  	   spaceinvaders.positionnerUnNouveauVaisseau(new Dimension(7,2),new Position(5,9), 1);
  	   spaceinvaders.tirerUnMissile(new Dimension(3,2),1);
- 	   for (int i = 1; i <=6 ; i++) {
+ 	   for (int i = 1; i <=7 ; i++) {
  		   spaceinvaders.deplacerMissile();
  	   }
  	   
@@ -296,6 +296,54 @@ import org.junit.*;
         "...............\n" + 
         ".....VVVVVVV...\n" + 
         ".....VVVVVVV...\n" , spaceinvaders.recupererEspaceJeuDansChaineASCII());
+    }
+    
+   
+    @Test
+    public void test_LeVaisseauTirePlusieursMissiles() {
+    	spaceinvaders.positionnerUnNouveauVaisseau(new Dimension(3, 2), new Position(7, 9), 3);
+    	spaceinvaders.tirerUnMissile(new Dimension(1, 2), 1);
+    	
+    	for (int i = 0; i < 4; i++) {
+    		spaceinvaders.deplacerMissile();
+    	}
+    	
+    	spaceinvaders.tirerUnMissile(new Dimension(1, 2), 1);
+    	
+    	
+    	assertEquals("" + 
+    			"...............\n" + 
+    			"...............\n" +
+    			"........M......\n" + 
+    			"........M......\n" + 
+    			"...............\n" + 
+    			"...............\n" + 
+    			"........M......\n" + 
+    			"........M......\n" + 
+    			".......VVV.....\n" + 
+    			".......VVV.....\n" , spaceinvaders.recupererEspaceJeuDansChaineASCII());
+    }
+    
+    @Test
+    public void test_LeVaisseauPeutTirerPlusieursMissilesEtNeSeChevauchentPas() {
+    	spaceinvaders.positionnerUnNouveauVaisseau(new Dimension(3, 2), new Position(7, 9), 3);
+    	spaceinvaders.tirerUnMissile(new Dimension(1, 2), 1);
+    	spaceinvaders.deplacerMissile();
+    	spaceinvaders.deplacerMissile();
+    	spaceinvaders.tirerUnMissile(new Dimension(1, 2), 1);
+    	
+    	
+    	assertEquals("" + 
+    			"...............\n" + 
+    			"...............\n" +
+    			"...............\n" + 
+    			"...............\n" + 
+    			"........M......\n" + 
+    			"........M......\n" + 
+    			"...............\n" + 
+    			"...............\n" + 
+    			".......VVV.....\n" + 
+    			".......VVV.....\n" , spaceinvaders.recupererEspaceJeuDansChaineASCII());
     }
     
     

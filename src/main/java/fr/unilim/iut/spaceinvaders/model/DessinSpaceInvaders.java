@@ -3,6 +3,7 @@ package fr.unilim.iut.spaceinvaders.model;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
+import java.util.List;
 
 import fr.unilim.iut.spaceinvaders.moteurjeu.DessinJeu;
 
@@ -29,8 +30,11 @@ public class DessinSpaceInvaders implements DessinJeu {
 			this.dessinerUnVaisseau(vaisseau, im);
 		}
 		if (this.jeu.aUnMissile()) {
-			Missile missile = this.jeu.recupererMissile();
-			this.dessinerUnMissile(missile, im);
+			List<Missile> missiles = this.jeu.recupererTousLesMissiles();
+			for (Missile missile : missiles){
+				dessinerUnMissile(missile, im);
+			}
+				
 		}
 	}
 

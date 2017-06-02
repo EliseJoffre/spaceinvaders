@@ -6,10 +6,14 @@ public class Envahisseur extends Sprite{
 
 	public Envahisseur(Dimension dimension, Position positionOrigine, int vitesseEnvahisseur) {
 	    super(dimension, positionOrigine, vitesseEnvahisseur);
+	    direction = Direction.GAUCHE;
+		direction = Direction.DROITE;
+	    
     }
 	
 	public Direction sensDeplacement() {
 		return this.direction;
+		
 	}
 	
 	public void changerSensDeplacement(Direction nouvelleDirection) {

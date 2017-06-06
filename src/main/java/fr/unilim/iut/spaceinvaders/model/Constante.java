@@ -21,6 +21,8 @@ public class Constante {
 	public static final int ENVAHISSEUR_LONGUEUR = 125;
 	public static final int ENVAHISSEUR_HAUTEUR = 90;
 	public static final int ENVAHISSEUR_VITESSE = 13;
+	public static final int NOMBRE_ENVAHISSEURS = 3;
+	public static final int ORDONNEE_LIGNE = 100;
 	
 	
 

@@ -30,7 +30,7 @@ public class CollisionTest {
 		spaceinvaders.tirerUnMissile(new Dimension(1, 1), 1);
 		
 		for(int i=0;i<6;i++){
-			spaceinvaders.deplacerMissile();
+			spaceinvaders.deplacerLesMissiles();
 		}
  		assertEquals("" + 
  		"...............\n" + 
@@ -51,14 +51,14 @@ public class CollisionTest {
 
 		Envahisseur envahisseur = new Envahisseur(new Dimension(3, 2), new Position(9, 1), 1);
 		Missile missile = new Missile(new Dimension(1, 1), new Position(9, 1), 1);
-		assertTrue(collision.detecterCollision(missile, envahisseur));
+		Assert.assertTrue(collision.detecterCollision(missile, envahisseur));
 		
 		spaceinvaders.positionnerUnNouveauVaisseau(new Dimension(3,2),new Position(7,9), 1);
 		spaceinvaders.positionnerUnNouvelEnvahisseur(new Dimension(3, 2), new Position(8, 1), 1);
 		spaceinvaders.tirerUnMissile(new Dimension(1, 1), 1);
 		
 		for(int i=0;i<6;i++){
-			spaceinvaders.deplacerMissile();
+			spaceinvaders.deplacerLesMissiles();
 		}
  		assertEquals("" + 
  		"...............\n" + 
@@ -86,7 +86,7 @@ public class CollisionTest {
 		spaceinvaders.tirerUnMissile(new Dimension(1, 1), 1);
 		
 		for(int i=0;i<6;i++){
-			spaceinvaders.deplacerMissile();
+			spaceinvaders.deplacerLesMissiles();
 		}
  		assertEquals("" + 
  		"...............\n" + 
@@ -117,7 +117,8 @@ public class CollisionTest {
 		spaceinvaders.tirerUnMissile(new Dimension(1, 1), 1);
 		
 		for(int i=0;i<4;i++){
-			spaceinvaders.deplacerMissile();
+			spaceinvaders.deplacerLesMissiles();
+			
 		}
  		assertEquals("" + 
  		".......EEE.....\n" + 
@@ -145,7 +146,7 @@ public class CollisionTest {
 		spaceinvaders.tirerUnMissile(new Dimension(1, 1), 1);
 		
 		for(int i=0;i<6;i++){
-			spaceinvaders.deplacerMissile();
+			spaceinvaders.deplacerLesMissiles();
 		}
  		assertEquals("" + 
  		".......EEE.....\n" + 
@@ -173,7 +174,7 @@ public class CollisionTest {
 		spaceinvaders.tirerUnMissile(new Dimension(1, 1), 1);
 		
 		for(int i=0;i<6;i++){
-			spaceinvaders.deplacerMissile();
+			spaceinvaders.deplacerLesMissiles();
 		}
  		assertEquals("" + 
  		".......EEE.....\n" + 

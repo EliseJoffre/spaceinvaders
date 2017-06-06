@@ -25,7 +25,7 @@ public class FinPartieTest {
 	    	spaceinvaders.tirerUnMissile(new Dimension(1, 2), 1);
 	    	
 	    	for (int i = 0; i < 6; i++) {
-	    		spaceinvaders.deplacerMissile();
+	    		spaceinvaders.deplacerLesMissiles();
 	    	}
 	    	
 	    	Assert.assertTrue(spaceinvaders.etreFini());

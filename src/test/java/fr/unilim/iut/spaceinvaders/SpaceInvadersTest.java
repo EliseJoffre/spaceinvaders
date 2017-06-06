@@ -122,7 +122,7 @@ import org.junit.*;
 	public void test_VaisseauImmobile_DeplacerVaisseauVersLaDroite() {
 		
     	spaceinvaders.positionnerUnNouveauVaisseau(new Dimension(3,2),new Position(12,9), 3);
-		spaceinvaders.deplacerVaisseauVersLaDroite();
+		spaceinvaders.deplacerVaisseauADroite();
 		assertEquals("" + 
 		"...............\n" + 
 		"...............\n" +
@@ -141,7 +141,7 @@ import org.junit.*;
     public void test_VaisseauAvance_DeplacerVaisseauVersLaGauche() {
 
        spaceinvaders.positionnerUnNouveauVaisseau(new Dimension(3,2),new Position(7,9), 3);
-       spaceinvaders.deplacerVaisseauVersLaGauche();
+       spaceinvaders.deplacerVaisseauAGauche();
 
        assertEquals("" + 
        "...............\n" + 
@@ -160,7 +160,7 @@ import org.junit.*;
     public void test_VaisseauImmobile_DeplacerVaisseauVersLaGauche() {
 
 	   spaceinvaders.positionnerUnNouveauVaisseau(new Dimension(3,2),new Position(0,9), 3);
-       spaceinvaders.deplacerVaisseauVersLaGauche();
+       spaceinvaders.deplacerVaisseauAGauche();
 
        assertEquals("" + 
        "...............\n" + 
@@ -177,7 +177,7 @@ import org.junit.*;
     public void test_VaisseauAvance_DeplacerVaisseauVersLaDroite() {
 
         spaceinvaders.positionnerUnNouveauVaisseau(new Dimension(3,2),new Position(7,9),3);
-        spaceinvaders.deplacerVaisseauVersLaDroite();
+        spaceinvaders.deplacerVaisseauADroite();
         assertEquals("" + 
         "...............\n" + 
         "...............\n" +
@@ -195,7 +195,7 @@ import org.junit.*;
     public void test_VaisseauAvancePartiellement_DeplacerVaisseauVersLaDroite() {
 
        spaceinvaders.positionnerUnNouveauVaisseau(new Dimension(3,2),new Position(10,9),3);
-       spaceinvaders.deplacerVaisseauVersLaDroite();
+       spaceinvaders.deplacerVaisseauADroite();
        assertEquals("" + 
        "...............\n" + 
        "...............\n" +
@@ -213,7 +213,7 @@ import org.junit.*;
     public void test_VaisseauAvancePartiellement_DeplacerVaisseauVersLaGauche() {
 
        spaceinvaders.positionnerUnNouveauVaisseau(new Dimension(3,2),new Position(1,9), 3);
-       spaceinvaders.deplacerVaisseauVersLaGauche();
+       spaceinvaders.deplacerVaisseauAGauche();
 
        assertEquals("" + 
        "...............\n" + 
@@ -259,7 +259,7 @@ import org.junit.*;
 	   spaceinvaders.positionnerUnNouveauVaisseau(new Dimension(7,2),new Position(5,9), 2);
 	   spaceinvaders.tirerUnMissile(new Dimension(3,2),2);
 
-	   spaceinvaders.deplacerMissile();
+	   spaceinvaders.deplacerLesMissiles();
 	   
        assertEquals("" + 
        "...............\n" + 
@@ -280,10 +280,10 @@ import org.junit.*;
  	   spaceinvaders.positionnerUnNouveauVaisseau(new Dimension(7,2),new Position(5,9), 1);
  	   spaceinvaders.tirerUnMissile(new Dimension(3,2),1);
  	   for (int i = 1; i <=7 ; i++) {
- 		   spaceinvaders.deplacerMissile();
+ 		   spaceinvaders.deplacerLesMissiles();
  	   }
  	   
- 	   spaceinvaders.deplacerMissile();
+ 	   spaceinvaders.deplacerLesMissiles();
  	  
         assertEquals("" +
         "...............\n" + 
@@ -305,7 +305,7 @@ import org.junit.*;
     	spaceinvaders.tirerUnMissile(new Dimension(1, 2), 1);
     	
     	for (int i = 0; i < 4; i++) {
-    		spaceinvaders.deplacerMissile();
+    		spaceinvaders.deplacerLesMissiles();
     	}
     	
     	spaceinvaders.tirerUnMissile(new Dimension(1, 2), 1);
@@ -328,8 +328,8 @@ import org.junit.*;
     public void test_LeVaisseauPeutTirerPlusieursMissilesEtNeSeChevauchentPas() {
     	spaceinvaders.positionnerUnNouveauVaisseau(new Dimension(3, 2), new Position(7, 9), 3);
     	spaceinvaders.tirerUnMissile(new Dimension(1, 2), 1);
-    	spaceinvaders.deplacerMissile();
-    	spaceinvaders.deplacerMissile();
+    	spaceinvaders.deplacerLesMissiles();
+    	spaceinvaders.deplacerLesMissiles();
     	spaceinvaders.tirerUnMissile(new Dimension(1, 2), 1);
     	
     	
@@ -346,6 +346,67 @@ import org.junit.*;
     			".......VVV.....\n" , spaceinvaders.recupererEspaceJeuDansChaineASCII());
     }
     
+    @Test
+    public void test_UneLigneDEnvahisseurEstPositionnée() {
+    	spaceinvaders.positionnerUnNouveauVaisseau(new Dimension(3, 2), new Position(7, 9), 3);
+    	spaceinvaders.positionnerUneLigneDEnvahisseurs(3, new Dimension(1, 1), 0, 1);
+    	
+    	
+    	assertEquals("" + 
+    			"...E...E...E...\n" + 
+    			"...............\n" +
+    			"...............\n" + 
+    			"...............\n" + 
+    			"...............\n" + 
+    			"...............\n" + 
+    			"...............\n" + 
+    			"...............\n" + 
+    			".......VVV.....\n" + 
+    			".......VVV.....\n" , spaceinvaders.recupererEspaceJeuDansChaineASCII());
+    }
+    
+    @Test
+    public void test_UneLigneDEnvahisseurSeDeplace() {
+    	spaceinvaders.positionnerUnNouveauVaisseau(new Dimension(3, 2), new Position(7, 9), 3);
+    	spaceinvaders.positionnerUneLigneDEnvahisseurs(3, new Dimension(1, 1), 0, 1);
+    	spaceinvaders. deplacerLaLigneDEnvahisseur();
+    	
+    	assertEquals("" + 
+    			"....E...E...E..\n" + 
+    			"...............\n" +
+    			"...............\n" + 
+    			"...............\n" + 
+    			"...............\n" + 
+    			"...............\n" + 
+    			"...............\n" + 
+    			"...............\n" + 
+    			".......VVV.....\n" + 
+    			".......VVV.....\n" , spaceinvaders.recupererEspaceJeuDansChaineASCII());
+    }
+    
+    @Test
+    public void test_UneLigneDEnvahisseurChangeDeSensArriverAuBout() {
+    	spaceinvaders.positionnerUnNouveauVaisseau(new Dimension(3, 2), new Position(7, 9), 3);
+    	spaceinvaders.positionnerUneLigneDEnvahisseurs(3, new Dimension(1, 1), 0, 1);
+    	for(int i=0; i<5;i++){
+    		spaceinvaders. deplacerLaLigneDEnvahisseur();
+        	
+    	}
+    
+    	
+    	assertEquals("" + 
+    			".....E...E...E.\n" + 
+    			"...............\n" +
+    			"...............\n" + 
+    			"...............\n" + 
+    			"...............\n" + 
+    			"...............\n" + 
+    			"...............\n" + 
+    			"...............\n" + 
+    			".......VVV.....\n" + 
+    			".......VVV.....\n" , spaceinvaders.recupererEspaceJeuDansChaineASCII());
+    }
+   
     
    
 

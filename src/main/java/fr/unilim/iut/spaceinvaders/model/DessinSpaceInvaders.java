@@ -13,28 +13,28 @@ public class DessinSpaceInvaders implements DessinJeu {
 
 	public DessinSpaceInvaders(SpaceInvaders spaceInvaders) {
 		this.jeu = spaceInvaders;
-
 	}
 
-	@Override
 	public void dessiner(BufferedImage im) {
 		String jeu = this.jeu.recupererEspaceJeuDansChaineASCII();
 		this.dessinerUnFond(jeu, im);
-		if (this.jeu.aUnEnvahisseur()){
-			Envahisseur envahisseur = this.jeu.recupererEnvahisseur();
-			this.dessinerUnEnvahisseur(envahisseur, im);
+		if (this.jeu.aUnEnvahisseur()) {
+			List<Envahisseur> envahisseurs = this.jeu.recupererTousLesEnvahisseurs();
+			for (Envahisseur envahisseur : envahisseurs) {
+				this.dessinerUnEnvahisseur(envahisseur, im);
+			}
 		}
-		
+
 		if (this.jeu.aUnVaisseau()) {
 			Vaisseau vaisseau = this.jeu.recupererVaisseau();
 			this.dessinerUnVaisseau(vaisseau, im);
 		}
+
 		if (this.jeu.aUnMissile()) {
 			List<Missile> missiles = this.jeu.recupererTousLesMissiles();
-			for (Missile missile : missiles){
-				dessinerUnMissile(missile, im);
+			for (Missile missile : missiles) {
+				this.dessinerUnMissile(missile, im);
 			}
-				
 		}
 	}
 
@@ -55,13 +55,13 @@ public class DessinSpaceInvaders implements DessinJeu {
 				missile.hauteur(), null);
 
 	}
-	
-	private void dessinerUnEnvahisseur (Envahisseur envahisseur, BufferedImage im) {
+
+	private void dessinerUnEnvahisseur(Envahisseur envahisseur, BufferedImage im) {
 		Graphics2D crayon = (Graphics2D) im.getGraphics();
 		java.awt.Toolkit toolkit = java.awt.Toolkit.getDefaultToolkit();
 		Image image = toolkit.getImage("./img/envahisseur.png");
-		crayon.drawImage(image, envahisseur.abscisseLaPlusAGauche(), envahisseur.ordonneeLaPlusBasse(), envahisseur.longueur(),
-				envahisseur.hauteur(), null);
+		crayon.drawImage(image, envahisseur.abscisseLaPlusAGauche(), envahisseur.ordonneeLaPlusBasse(),
+				envahisseur.longueur(), envahisseur.hauteur(), null);
 
 	}
 
@@ -70,7 +70,6 @@ public class DessinSpaceInvaders implements DessinJeu {
 		java.awt.Toolkit toolkit = java.awt.Toolkit.getDefaultToolkit();
 		Image image = toolkit.getImage("./img/fond.png");
 		crayon.drawImage(image, 0, 0, 750, 650, null);
-		
 
 	}
 
